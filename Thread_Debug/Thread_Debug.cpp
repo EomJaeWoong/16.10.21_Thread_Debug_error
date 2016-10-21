@@ -69,13 +69,15 @@ list<st_SESSION *>		g_SessionList;
 //
 // Session 이 생성 후, 생성 될때 (Accept 처리 완료시)  st_PLAYER 객체도 함께 생성되어 여기에 등록 된다.
 ////////////////////////////////////////////////////////
+/*
 CRITICAL_SECTION		g_Player_cs;
 list<st_PLAYER *>		g_PlayerList;
 
 #define LockPlayer()	EnterCriticalSection(&g_Player_cs)
 #define UnlockPlayer()	LeaveCriticalSection(&g_Player_cs)
+*/
 
-
+st_PLAYER			g_stPlayer[dfMAX_PLAYER];
 
 HANDLE	g_hExitThreadEvent;
 

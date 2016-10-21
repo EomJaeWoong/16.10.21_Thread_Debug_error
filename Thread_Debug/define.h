@@ -10,10 +10,17 @@ struct st_SESSION
 
 struct st_PLAYER
 {
+	int status;
+
 	int SessionID;
 	int Content[3];
 };
 
+#define dfTHREAD_NUM		4
+#define dfMAX_PLAYER		5000
 
-#define dfTHREAD_NUM	4
+#define dfSTATE_NONE		1
+#define dfSTATE_CONNECT	2
+#define dfSTATE_LOGIN		3
+
 #endif
