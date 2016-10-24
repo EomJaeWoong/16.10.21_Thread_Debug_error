@@ -1,16 +1,16 @@
-﻿빌드 시작: 2016-10-21 오후 3:36:35
-     1>2 노드의 "C:\Users\USER\Desktop\Thread_Debug_error\Thread_Debug\Thread_Debug.vcxproj" 프로젝트(Build 대상)입니다.
+﻿빌드 시작: 2016-10-24 오후 12:02:17
+     1>2 노드의 "C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Thread_Debug\Thread_Debug.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Thread_Debug.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Thread_Debug.cpp
          Thread_Debug.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\USER\Desktop\Thread_Debug_error\Release\Thread_Debug.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\USER\Desktop\Thread_Debug_error\Release\Thread_Debug.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\USER\Desktop\Thread_Debug_error\Release\Thread_Debug.lib" /MACHINE:X86 /SAFESEH Release\stdafx.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Release\Thread_Debug.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Release\Thread_Debug.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Release\Thread_Debug.lib" /MACHINE:X86 /SAFESEH Release\stdafx.obj
          Release\Thread_Debug.obj
          코드를 생성하고 있습니다.
          코드를 생성했습니다.
-         Thread_Debug.vcxproj -> C:\Users\USER\Desktop\Thread_Debug_error\Release\Thread_Debug.exe
-     1>"C:\Users\USER\Desktop\Thread_Debug_error\Thread_Debug\Thread_Debug.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+         Thread_Debug.vcxproj -> C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Release\Thread_Debug.exe
+     1>"C:\Users\EomJaeWoong\Documents\Visual Studio 2013\Projects\16.10.21_Thread_Debug_error\Thread_Debug\Thread_Debug.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:00.65
+경과 시간: 00:00:00.53

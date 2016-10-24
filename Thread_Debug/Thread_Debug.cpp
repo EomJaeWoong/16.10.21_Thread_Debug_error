@@ -69,15 +69,13 @@ list<st_SESSION *>		g_SessionList;
 //
 // Session 이 생성 후, 생성 될때 (Accept 처리 완료시)  st_PLAYER 객체도 함께 생성되어 여기에 등록 된다.
 ////////////////////////////////////////////////////////
-/*
 CRITICAL_SECTION		g_Player_cs;
 list<st_PLAYER *>		g_PlayerList;
 
 #define LockPlayer()	EnterCriticalSection(&g_Player_cs)
 #define UnlockPlayer()	LeaveCriticalSection(&g_Player_cs)
-*/
 
-st_PLAYER			g_stPlayer[dfMAX_PLAYER];
+//st_PLAYER			g_stPlayer[dfMAX_PLAYER];
 
 HANDLE	g_hExitThreadEvent;
 
@@ -187,8 +185,11 @@ unsigned int WINAPI AcceptThread(LPVOID lpParam)
 			break;
 		}
 
-		if ( dwError == WAIT_OBJECT_0 )
+		if (dwError == WAIT_OBJECT_0)
+		{
+			SetEvent(g_hExitThreadEvent);
 			break;
+		}
 
 
 		//----------------------------------------------------------
@@ -260,8 +261,11 @@ unsigned int WINAPI IOThread(LPVOID lpParam)
 	while ( bLoop )
 	{
 		dwError = WaitForSingleObject(g_hExitThreadEvent, 10);
-		if ( dwError != WAIT_TIMEOUT )
+		if (dwError != WAIT_TIMEOUT)
+		{
+			SetEvent(g_hExitThreadEvent);
 			break;
+		}
 
 		//----------------------------------------------------------
 		// 정상 로직처리 
@@ -334,8 +338,11 @@ unsigned int WINAPI UpdateThread(LPVOID lpParam)
 			break;
 		}
 
-		if ( dwError == WAIT_OBJECT_0 )
+		if (dwError == WAIT_OBJECT_0)
+		{
+			SetEvent(g_hExitThreadEvent);
 			break;
+		}
 
 
 		//----------------------------------------------------------
@@ -398,7 +405,7 @@ void Initial()
 	//------------------------------------------------
 	// 모든 스레드를 종료 시킬 이벤트
 	//------------------------------------------------
-	g_hExitThreadEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+	g_hExitThreadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
 
 	InitializeCriticalSection(&g_Accept_cs);
 	InitializeCriticalSection(&g_Action_cs);
@@ -491,12 +498,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	// 스레드 종료 대기
 	//------------------------------------------------
 	HANDLE hThread[3] = {hAcceptThread, hIOThread, hUpdateThread};
-	WaitForMultipleObjects(dfTHREAD_NUM, hThread, TRUE, INFINITE);
-
+	int retval = WaitForMultipleObjects(dfTHREAD_NUM, hThread, TRUE, INFINITE);
 
 	Release();
 	
-
 	//------------------------------------------------
 	// 디버깅용 코드  스레드 정상종료 확인.
 	//------------------------------------------------
@@ -507,16 +512,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	GetExitCodeThread(hAcceptThread, &ExitCode);
 	if ( ExitCode != 0 )
 		wprintf(L"error - Accept Thread not exit\n");
+	CloseHandle(hAcceptThread);
 
 	GetExitCodeThread(hIOThread, &ExitCode);
 	if ( ExitCode != 0 )
 		wprintf(L"error - IO Thread not exit\n");
+	CloseHandle(hIOThread);
 
 	GetExitCodeThread(hUpdateThread, &ExitCode);
 	if ( ExitCode != 0 )
 		wprintf(L"error - Update Thread not exit\n");
-
-	//ResetEvent(g_hExitThreadEvent);
+	CloseHandle(hUpdateThread);
 
 	return 0;
 }
